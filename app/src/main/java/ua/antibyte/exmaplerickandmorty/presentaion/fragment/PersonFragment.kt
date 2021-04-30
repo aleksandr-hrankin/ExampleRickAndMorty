@@ -7,12 +7,11 @@ import androidx.lifecycle.ViewModelProviders
 import ua.antibyte.exmaplerickandmorty.R
 import ua.antibyte.exmaplerickandmorty.common.utils.Status
 import ua.antibyte.exmaplerickandmorty.data.api.ApiFactory
-import ua.antibyte.exmaplerickandmorty.data.api.helper.ApiHelper
 import ua.antibyte.exmaplerickandmorty.data.api.helper.ApiHelperImpl
 import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.PersonsViewModel
 import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.factory.ViewModelFactory
 
-class PersonsFragment : Fragment(R.layout.fragment_persons) {
+class PersonFragment : Fragment(R.layout.fragment_person) {
     private lateinit var viewModel: PersonsViewModel
 
     override fun onStart() {
