@@ -1,4 +1,4 @@
-package ua.antibyte.exmaplerickandmorty.data.api.service
+package ua.antibyte.exmaplerickandmorty.data.api
 
 import retrofit2.http.GET
 import ua.antibyte.exmaplerickandmorty.data.model.dto.LocationsResponse

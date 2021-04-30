@@ -2,12 +2,13 @@ package ua.antibyte.exmaplerickandmorty.presentaion.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ua.antibyte.exmaplerickandmorty.R
 import ua.antibyte.exmaplerickandmorty.presentaion.fragment.PersonFragment
 import ua.antibyte.exmaplerickandmorty.presentaion.navigation.Navigation
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

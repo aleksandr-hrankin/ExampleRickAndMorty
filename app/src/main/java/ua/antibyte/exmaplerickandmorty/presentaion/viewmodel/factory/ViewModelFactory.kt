@@ -7,15 +7,24 @@ import ua.antibyte.exmaplerickandmorty.data.repository.RepositoryImpl
 import ua.antibyte.exmaplerickandmorty.domain.usecase.GetAllLocationsUseCase
 import ua.antibyte.exmaplerickandmorty.domain.usecase.GetAllPersonsUseCase
 import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.LocationViewModel
-import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.PersonsViewModel
+import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.PersonViewModel
+import javax.inject.Inject
+import javax.inject.Provider
+import javax.inject.Singleton
 
-class ViewModelFactory(private val apiHelper: ApiHelper) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(PersonsViewModel::class.java)) {
-            return PersonsViewModel(GetAllPersonsUseCase(RepositoryImpl(apiHelper))) as T
-        } else if (modelClass.isAssignableFrom(LocationViewModel::class.java)) {
-            return LocationViewModel(GetAllLocationsUseCase(RepositoryImpl(apiHelper))) as T
+@Singleton
+class ViewModelFactory @Inject constructor(
+    private val viewModels: MutableMap<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        val creator = viewModels[modelClass] ?: viewModels.entries.firstOrNull {
+            modelClass.isAssignableFrom(it.key)
+        }?.value ?: throw IllegalArgumentException("Unknown model class $modelClass")
+        try {
+            @Suppress("UNCHECKED_CAST")
+            return creator.get() as T
+        } catch (e: Exception) {
+            throw RuntimeException(e)
         }
-        throw IllegalArgumentException("Unknown class name")
     }
 }

@@ -1,30 +1,23 @@
 package ua.antibyte.exmaplerickandmorty.presentaion.fragment
 
 import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import ua.antibyte.exmaplerickandmorty.R
 import ua.antibyte.exmaplerickandmorty.common.utils.Status
-import ua.antibyte.exmaplerickandmorty.data.api.ApiFactory
-import ua.antibyte.exmaplerickandmorty.data.api.helper.ApiHelperImpl
-import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.PersonsViewModel
-import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.factory.ViewModelFactory
+import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.PersonViewModel
 
-class PersonFragment : Fragment(R.layout.fragment_person) {
-    private lateinit var viewModel: PersonsViewModel
+class PersonFragment : BaseFragment(R.layout.fragment_person) {
+    private lateinit var viewModel: PersonViewModel
 
     override fun onStart() {
         super.onStart()
-        intViewModel()
+        initViewModel()
         setupObservers()
     }
 
-    private fun intViewModel() {
-        viewModel = ViewModelProviders.of(
-            this,
-            ViewModelFactory(ApiHelperImpl(ApiFactory.createApiService()))
-        ).get(PersonsViewModel::class.java)
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this, viewModelFactory).get(PersonViewModel::class.java)
     }
 
     private fun setupObservers() {

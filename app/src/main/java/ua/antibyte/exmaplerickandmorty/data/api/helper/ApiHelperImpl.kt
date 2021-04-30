@@ -1,6 +1,6 @@
 package ua.antibyte.exmaplerickandmorty.data.api.helper
 
-import ua.antibyte.exmaplerickandmorty.data.api.service.ApiService
+import ua.antibyte.exmaplerickandmorty.data.api.ApiService
 import ua.antibyte.exmaplerickandmorty.data.model.dto.LocationsResponse
 import ua.antibyte.exmaplerickandmorty.data.model.dto.PersonsResponse
 
