@@ -1,4 +1,4 @@
-package ua.antibyte.exmaplerickandmorty.data.model.dto
+package ua.antibyte.exmaplerickandmorty.domain.model.dto
 
 import com.google.gson.annotations.SerializedName
 

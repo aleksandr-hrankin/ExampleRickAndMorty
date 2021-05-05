@@ -5,7 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import ua.antibyte.exmaplerickandmorty.common.di.annotation.ViewModelKey
-import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.LocationViewModel
+import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.LocationPlaceViewModel
 import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.PersonViewModel
 
 @Module
@@ -17,6 +17,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(LocationViewModel::class)
-    internal abstract fun provideLocationsViewModel(viewModel: LocationViewModel): ViewModel
+    @ViewModelKey(LocationPlaceViewModel::class)
+    internal abstract fun provideLocationsViewModel(viewModelPlace: LocationPlaceViewModel): ViewModel
 }

@@ -5,10 +5,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import ua.antibyte.exmaplerickandmorty.R
 import ua.antibyte.exmaplerickandmorty.common.utils.Status
-import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.LocationViewModel
+import ua.antibyte.exmaplerickandmorty.presentaion.viewmodel.LocationPlaceViewModel
 
 class LocationFragment : BaseFragment(R.layout.fragment_location) {
-    private lateinit var viewModel: LocationViewModel
+    private lateinit var viewModelPlace: LocationPlaceViewModel
 
     override fun onStart() {
         super.onStart()
@@ -17,11 +17,11 @@ class LocationFragment : BaseFragment(R.layout.fragment_location) {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this, viewModelFactory).get(LocationViewModel::class.java)
+        viewModelPlace = ViewModelProvider(this, viewModelFactory).get(LocationPlaceViewModel::class.java)
     }
 
     private fun setupObservers() {
-        viewModel.getAllLocations().observe(this, Observer {
+        viewModelPlace.getAllLocations().observe(this, Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {

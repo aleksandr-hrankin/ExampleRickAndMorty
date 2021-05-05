@@ -1,9 +1,9 @@
 package ua.antibyte.exmaplerickandmorty.data.repository
 
-import ua.antibyte.exmaplerickandmorty.data.model.dto.LocationsResponse
-import ua.antibyte.exmaplerickandmorty.data.model.dto.PersonsResponse
+import ua.antibyte.exmaplerickandmorty.domain.model.enity.LocationPlace
+import ua.antibyte.exmaplerickandmorty.domain.model.enity.Person
 
-interface Repository{
-    suspend fun getAllPersons(): PersonsResponse
-    suspend fun getAllLocations(): LocationsResponse
+interface Repository {
+    suspend fun getAllPersons(): List<Person>
+    suspend fun getAllLocations(): List<LocationPlace>
 }
